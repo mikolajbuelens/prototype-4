@@ -1,7 +1,11 @@
 export default function login(){
     return(
     <>
-    <h1>Test Login</h1>
+    <form>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button type="submit">Login</button>
+    </form>
     </>
     );
 };

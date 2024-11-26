@@ -13,7 +13,7 @@ export default function Home() {
           height={38}
           priority
         />
-     <form>
+     <form className={styles.form}>
       <input type="text" placeholder="Username" />
       <input type="password" placeholder="Password" />
       <button type="submit">Login</button>
