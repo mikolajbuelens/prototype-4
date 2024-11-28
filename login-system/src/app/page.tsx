@@ -7,18 +7,31 @@ import { use, useState } from "react";
 import { useEffect } from "react";
 import { connectDB } from "./lib/data";
 import { getServerSession } from "next-auth";
+import { createClient } from '@supabase/supabase-js'
+// const supabaseUrl =  process.env.SUPABASE_URL
+// const supabaseKey = process.env.SUPABASE_KEY
 
-export default  function Home() {
-  const [username, setUsername] = useState("");
+export default  function Login() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   console.log(username);
-  // };
-// const [client, setClient] = useState(null);
 
-// const client = await connectDB();
   
+  // const { data, error } = await supabase
+  //   .from('users')
+  //   .select()
+  //   console.log(data, error)
+  
+  const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+
+async function handleLogin(e) {
+    e.preventDefault();
+  console.log(email, password)
+  let { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password
+    })
+    console.log(data, error)
+  }
 
   return (
     <>
@@ -34,19 +47,24 @@ export default  function Home() {
           height={38}
           priority
         />
-        <form className={styles.form}>
+
+        
+        <form onSubmit={handleLogin} className={styles.form}>
           <input
             type="text"
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+           onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit">Login</button>
+          <h2>OR</h2>
+          <button type="submit">Login with Github</button>
         </form>
+        <h2>Don&apos;t have an account? <a href="/signup">Sign up</a></h2>
       </main>
     </div>
   
