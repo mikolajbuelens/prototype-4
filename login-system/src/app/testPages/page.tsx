@@ -1,16 +1,20 @@
-/* eslint-disable @next/next/no-async-client-component */
-'use client';
+/* eslint-disable react-hooks/rules-of-hooks */
+// 'use client';
 
 import Image from "next/image";
-import styles from "../app/ui/login.module.css"; // test out css module
+// import styles from "../app/ui/login.module.css"; // test out css module
 import { use, useState } from "react";
 import { useEffect } from "react";
-import { connectDB } from "./lib/data";
+import { connectDB } from "../lib/data";
 import { getServerSession } from "next-auth";
 
-export default  function Home() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+export default async function testPage() {
+
+const session = await getServerSession();
+console.log(session);
+
+//   const [username, setUsername] = useState("");
+//   const [password, setPassword] = useState("");
   // const handleLogin = (e) => {
   //   e.preventDefault();
   //   console.log(username);
@@ -34,7 +38,7 @@ export default  function Home() {
           height={38}
           priority
         />
-        <form className={styles.form}>
+        {/* <form>
           <input
             type="text"
             placeholder="Username"
@@ -46,7 +50,7 @@ export default  function Home() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit">Login</button>
-        </form>
+        </form> */}
       </main>
     </div>
   
