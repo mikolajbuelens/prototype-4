@@ -20,6 +20,15 @@ export default function Login() {
   //   .select()
   //   console.log(data, error)
 
+
+  // temp function to test if user is logged in => user should be redirected (to dashboard)
+  async function getUser(){
+    const { data: { user } } = await supabase.auth.getUser();
+    console.log(user)
+  }
+
+
+
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -35,6 +44,12 @@ export default function Login() {
     console.log(data, error);
   }
 
+  async function handleProvider(provider) {
+  let { data, error } = await supabase.auth.signInWithOAuth({
+    provider: provider,
+  })
+  console.log(data, error)
+  }
   return (
     <>
       {/* {client && <p className="to-blue-600">connected</p>} */}
@@ -63,7 +78,7 @@ export default function Login() {
             />
             <button type="submit">Login</button>
             <h2>OR</h2>
-            <button
+            <button onClick={() => handleProvider('github')}
               className={`${styles.provider} ${styles.github}`}
               type="submit"
             >
@@ -92,7 +107,7 @@ export default function Login() {
               />{" "}
               Sign in with Google
             </button>
-            <button
+            <button onClick={getUser}
               className={`${styles.provider} ${styles.facebook}`}
               type="submit"
             >
