@@ -7,9 +7,11 @@ import { use, useState } from "react";
 import { useEffect } from "react";
 import { connectDB } from "./lib/data";
 import { getServerSession } from "next-auth";
-import { createClient } from "@supabase/supabase-js";
-// const supabaseUrl =  process.env.SUPABASE_URL
-// const supabaseKey = process.env.SUPABASE_KEY
+import { createClient, Provider } from "@supabase/supabase-js";
+
+
+// ! ----Note to self: Remember to change domain for each provider when deploying (currently localhost:3000)----
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -44,7 +46,8 @@ export default function Login() {
     console.log(data, error);
   }
 
-  async function handleProvider(provider) {
+  // takes a provider as a argument and logs in user with the help of supabase
+  async function handleProvider(provider: Provider) {
   let { data, error } = await supabase.auth.signInWithOAuth({
     provider: provider,
   })
@@ -92,7 +95,7 @@ export default function Login() {
               />
               Sign in with Github
             </button>
-            <button
+            <button onClick={() => handleProvider('google')}
               type="submit"
               className={`${styles.provider} ${styles.google}`}
             >
@@ -107,7 +110,7 @@ export default function Login() {
               />{" "}
               Sign in with Google
             </button>
-            <button onClick={getUser}
+            <button onClick={() => handleProvider('facebook')}
               className={`${styles.provider} ${styles.facebook}`}
               type="submit"
             >
@@ -120,6 +123,9 @@ export default function Login() {
                 priority
               />{" "}
               Sign in with Facebook
+            </button>
+            <button onClick={getUser}
+            >Get User
             </button>
             <button className={`${styles.provider} ${styles.x}`} type="submit">
               {" "}
