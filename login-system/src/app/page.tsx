@@ -50,6 +50,7 @@ export default function Login() {
   async function handleProvider(provider: Provider) {
   let { data, error } = await supabase.auth.signInWithOAuth({
     provider: provider,
+    options: { redirectTo: 'http://localhost:3000/dashboard' },
   })
   console.log(data, error)
   }
