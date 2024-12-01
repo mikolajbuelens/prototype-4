@@ -1,18 +1,81 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* height: 100vh; */
-    background-color: rgba(35, 35, 35);
-    border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  background-color: rgba(35, 35, 35);
+  border-radius: 5px;
+  /* height: 400px; */
 }
 
-.form input{
-margin: 10px;
-background-color: black;
-border: white;
-border-radius: 10px;
-color: white;
-padding: 10px;
+.form input {
+  margin: 10px;
+  background-color: black;
+  border: white;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  transition: border 0.5s;
+  border: rgba(35, 35, 35) 2px solid;
+}
+
+.form input:focus {
+  outline: none;
+  border: white 2px solid;
+}
+
+
+
+.provider{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(35, 35, 35);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
+    height: 30px;
+}
+
+.github{
+    background-color: #333;
+    color: white;
+    transition: background-color 0.5s;
+}
+
+.github:hover{
+    background-color: #444;
+}
+
+.google{
+    background-color: white;
+    color: black;
+    transition: background-color 0.5s;
+}
+
+.google:hover{
+    background-color: #f1f1f1;
+}
+
+.facebook{
+    background-color: #3b5998;
+    color: white;
+    transition: background-color 0.5s;
+}
+
+.facebook:hover{
+    background-color: #4a69ad;
+}
+
+.x{
+    color: white;
+    background-color: #000;
+    transition: background-color 0.5s;
+}
+
+.x:hover{
+    background-color: #111;
 }
