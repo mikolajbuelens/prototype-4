@@ -128,8 +128,9 @@ export default function Login() {
             <button onClick={getUser}
             >Get User
             </button>
-            <button className={`${styles.provider} ${styles.x}`} type="submit">
-              {" "}
+            <button onClick={() => handleProvider('twitter')}
+             className={`${styles.provider} ${styles.x}`} type="submit">
+              
               <Image 
                 className="dark:invert"
                 src="/X.svg"

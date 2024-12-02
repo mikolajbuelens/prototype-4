@@ -4,7 +4,6 @@ import Image from "next/image";
 import { createClient, Provider } from "@supabase/supabase-js";
 import styles from "../app/ui/login.module.css";
 import { useState, useEffect } from "react";
-import { get } from "http";
 
 
 export default function Dashboard() {
