@@ -9,13 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.46.2",
     "@vercel/postgres": "^0.10.0",
     "bcrypt": "^5.1.1",
     "i": "^0.3.7",
-    "next": "15.0.3",
+    "next": "^15.0.3",
     "next-auth": "^4.24.10",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "22.9.1",
