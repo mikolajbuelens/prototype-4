@@ -25,57 +25,60 @@
   border: white 2px solid;
 }
 
-
-
-.provider{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(35, 35, 35);
-    border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
-    width: 80%;
-    height: 30px;
+.provider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: ; */
+  background-color: rgba(35, 35, 35);
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  width: 80%;
+  /* padding-right: 5%; */
+  height: 30px;
 }
 
-.github{
-    background-color: #333;
-    color: white;
-    transition: background-color 0.5s;
+.provider img {
+  margin-right: 10px;
 }
 
-.github:hover{
-    background-color: #444;
+.github {
+  background-color: #333;
+  color: white;
+  transition: background-color 0.5s;
 }
 
-.google{
-    background-color: white;
-    color: black;
-    transition: background-color 0.5s;
+.github:hover {
+  background-color: #444;
 }
 
-.google:hover{
-    background-color: #f1f1f1;
+.google {
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s;
 }
 
-.facebook{
-    background-color: #3b5998;
-    color: white;
-    transition: background-color 0.5s;
+.google:hover {
+  background-color: #f1f1f1;
 }
 
-.facebook:hover{
-    background-color: #4a69ad;
+.facebook {
+  background-color: #3b5998;
+  color: white;
+  transition: background-color 0.5s;
 }
 
-.x{
-    color: white;
-    background-color: #000;
-    transition: background-color 0.5s;
+.facebook:hover {
+  background-color: #4a69ad;
 }
 
-.x:hover{
-    background-color: #111;
+.x {
+  color: white;
+  background-color: #000;
+  transition: background-color 0.5s;
+}
+
+.x:hover {
+  background-color: #111;
 }

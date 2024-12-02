@@ -125,9 +125,7 @@ export default function Login() {
               />{" "}
               Sign in with Facebook
             </button>
-            <button onClick={getUser}
-            >Get User
-            </button>
+          
             <button onClick={() => handleProvider('twitter')}
              className={`${styles.provider} ${styles.x}`} type="submit">
               
