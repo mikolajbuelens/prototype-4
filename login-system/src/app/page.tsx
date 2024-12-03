@@ -44,11 +44,26 @@ export default function Login() {
     window.location.href = "/dashboard";  
   }
 
+
+// Supabase docs for redirect fix => https://supabase.com/docs/guides/auth/redirect-urls
+  const getURL = () => {
+    let url =
+      process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
+      process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel.
+      'http://localhost:3000/'
+    // Make sure to include `https://` when not localhost.
+    url = url.startsWith('http') ? url : `https://${url}`
+    // Make sure to include a trailing `/`.
+    url = url.endsWith('/') ? url : `${url}/`
+    return url
+  }
+
   // takes a provider as a argument and logs in user with the help of supabase
   async function handleProvider(provider: Provider) {
     let { data, error } = await supabase.auth.signInWithOAuth({
       provider: provider,
-      options: { redirectTo: "https://prototype-4.vercel.app/dashboard" },
+      options: { redirectTo: "https://prototype-4.vercel.app/dashboard" }, // for some reason this doesn't work, user gets redirected to localhost:3000
+      // options: { redirectTo: "http://localhost:3000/dashboard" }, // this works locally but not when deployed
     });
     console.log(data, error);
   }

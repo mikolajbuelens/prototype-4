@@ -32,6 +32,7 @@ A login system made using Next.js and Supabase, with a simple UI and a few featu
 
 - Resolve issue where provider buttons where seen as submit buttons causing a premature redirect/form submission <br> -> https://stackoverflow.com/questions/14144655/onclick-triggering-submit
 
+- https://supabase.com/docs/guides/auth/redirect-urls <br> -> resolve issue where redirect always pointed to localhost:3000 in deployment
 
 
 #### General sources:
