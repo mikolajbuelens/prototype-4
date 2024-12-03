@@ -62,7 +62,7 @@ export default function Login() {
   async function handleProvider(provider: Provider) {
     let { data, error } = await supabase.auth.signInWithOAuth({
       provider: provider,
-      options: { redirectTo: "https://prototype-4.vercel.app/dashboard" }, // for some reason this doesn't work, user gets redirected to localhost:3000
+      options: { redirectTo: getURL() + "dashboard" },
       // options: { redirectTo: "http://localhost:3000/dashboard" }, // this works locally but not when deployed
     });
     console.log(data, error);
