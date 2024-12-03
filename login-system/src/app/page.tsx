@@ -40,14 +40,15 @@ export default function Login() {
       email: email,
       password: password,
     });
-    console.log(data, error);    
+    console.log(data, error);  
+    window.location.href = "/dashboard";  
   }
 
   // takes a provider as a argument and logs in user with the help of supabase
   async function handleProvider(provider: Provider) {
     let { data, error } = await supabase.auth.signInWithOAuth({
       provider: provider,
-      options: { redirectTo: "https://prototype-4.vercel.app/dashboard" },
+      options: { redirectTo: "http://localhost:3000/dashboard" },
     });
     console.log(data, error);
   }
