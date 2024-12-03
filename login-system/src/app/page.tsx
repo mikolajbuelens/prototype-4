@@ -9,9 +9,7 @@ import { connectDB } from "./lib/data";
 import { getServerSession } from "next-auth";
 import { createClient, Provider } from "@supabase/supabase-js";
 
-
 // ! ----Note to self: Remember to change domain for each provider when deploying (currently localhost:3000)----
-
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -22,14 +20,13 @@ export default function Login() {
   //   .select()
   //   console.log(data, error)
 
-
   // temp function to test if user is logged in => user should be redirected (to dashboard)
-  async function getUser(){
-    const { data: { user } } = await supabase.auth.getUser();
-    console.log(user)
+  async function getUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    console.log(user);
   }
-
-
 
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -43,17 +40,16 @@ export default function Login() {
       email: email,
       password: password,
     });
-    console.log(data, error);
-    window.location.href = "/dashboard";
+    console.log(data, error);    
   }
 
   // takes a provider as a argument and logs in user with the help of supabase
   async function handleProvider(provider: Provider) {
-  let { data, error } = await supabase.auth.signInWithOAuth({
-    provider: provider,
-    options: { redirectTo: 'https://prototype-4.vercel.app/dashboard' },
-  })
-  console.log(data, error)
+    let { data, error } = await supabase.auth.signInWithOAuth({
+      provider: provider,
+      options: { redirectTo: "https://prototype-4.vercel.app/dashboard" },
+    });
+    console.log(data, error);
   }
   return (
     <>
@@ -83,9 +79,9 @@ export default function Login() {
             />
             <button type="submit">Login</button>
             <h2>OR</h2>
-            <button onClick={() => handleProvider('github')}
+            <button type='button'
+              onClick={() => handleProvider("github")}
               className={`${styles.provider} ${styles.github}`}
-              type="submit"
             >
               <Image
                 className="dark:invert"
@@ -97,8 +93,8 @@ export default function Login() {
               />
               Sign in with Github
             </button>
-            <button onClick={() => handleProvider('google')}
-              type="submit"
+            <button type='button'
+              onClick={() => handleProvider("google")}
               className={`${styles.provider} ${styles.google}`}
             >
               {" "}
@@ -107,14 +103,13 @@ export default function Login() {
                 alt="Google logo"
                 width={20}
                 height={20}
-                
                 priority
               />{" "}
               Sign in with Google
             </button>
-            <button onClick={() => handleProvider('facebook')}
+            <button type='button'
+              onClick={() => handleProvider("facebook")}
               className={`${styles.provider} ${styles.facebook}`}
-              type="submit"
             >
               {" "}
               <Image
@@ -126,11 +121,11 @@ export default function Login() {
               />{" "}
               Sign in with Facebook
             </button>
-          
-            <button onClick={() => handleProvider('twitter')}
-             className={`${styles.provider} ${styles.x}`} type="submit">
-              
-              <Image 
+            <button type='button'
+              onClick={() => handleProvider("twitter")}
+              className={`${styles.provider} ${styles.x}`}
+            >
+              <Image
                 className="dark:invert"
                 src="/X.svg"
                 alt="X logo"

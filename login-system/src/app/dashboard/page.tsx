@@ -33,8 +33,13 @@ export default function Dashboard() {
 
   async function handleLogout() {
     let { error } = await supabase.auth.signOut();
-    if (error) console.log("Error logging out:", error.message);
-    window.location.href = "/";
+    if (error) {
+      console.error("Error logging out:", error.message);
+      return;
+    } else{
+      console.log('Logged out')
+      window.location.href = "/";
+    }
   }
 
 

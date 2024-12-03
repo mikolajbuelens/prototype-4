@@ -27,8 +27,10 @@ A login system made using Next.js and Supabase, with a simple UI and a few featu
 - Course introduction to Next.js (+ next-auth -> unused in final version) mainly used for setting up project and understanding Next.js basics
 <br> -> https://www.linkedin.com/learning/learning-next-js-24381329/next-js-a-react-framework-by-developer-for-developers?resume=false&u=121303466
 
-- chatGPT, used for resolving a problem with Tailwind, caused by pages not being included in the modules.exports of the tailwind.config.js file
+- ChatGPT, used for resolving a problem with Tailwind, caused by pages not being included in the modules.exports of the tailwind.config.js file
 <br> -> https://chatgpt.com/share/674e3ff5-71f0-8008-bc5a-472ff4f26d6f
+
+- Resolve issue where provider buttons where seen as submit buttons causing a premature redirect/form submission <br> -> https://stackoverflow.com/questions/14144655/onclick-triggering-submit
 
 
 
