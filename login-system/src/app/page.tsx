@@ -44,6 +44,7 @@ export default function Login() {
       password: password,
     });
     console.log(data, error);
+    window.location.href = "/dashboard";
   }
 
   // takes a provider as a argument and logs in user with the help of supabase
