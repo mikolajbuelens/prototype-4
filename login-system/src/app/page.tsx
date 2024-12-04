@@ -14,6 +14,7 @@ import { createClient, Provider } from "@supabase/supabase-js";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [url, setUrl] = useState("empty");
 
   // const { data, error } = await supabase
   //   .from('users')
@@ -46,7 +47,8 @@ export default function Login() {
 
 
 // Supabase docs for redirect fix => https://supabase.com/docs/guides/auth/redirect-urls
-  const getURL = () => {
+function getURL() {
+  console.log("test");
     let url =
       process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
       process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel.
@@ -55,18 +57,38 @@ export default function Login() {
     url = url.startsWith('http') ? url : `https://${url}`
     // Make sure to include a trailing `/`.
     url = url.endsWith('/') ? url : `${url}/`
+    console.error(url + "dashboard");
+// setUrl(url + "dashboard");
+// console.log("url has been set")
     return url
   }
 
-  // takes a provider as a argument and logs in user with the help of supabase
-  async function handleProvider(provider: Provider) {
-    let { data, error } = await supabase.auth.signInWithOAuth({
-      provider: provider,
-      options: { redirectTo: getURL() + "dashboard" },
-      // options: { redirectTo: "http://localhost:3000/dashboard" }, // this works locally but not when deployed
-    });
-    console.log(data, error);
+ 
+
+
+
+
+console.log(url);
+
+
+async function handleProvider(provider: Provider) {
+  let { data, error } = await supabase.auth.signInWithOAuth({
+    provider: provider,
+    options: { redirectTo: 'https://prototype-4.vercel.app/dashboard' },
+  })
+  console.log(data, error)
   }
+
+  
+  // takes a provider as a argument and logs in user with the help of supabase
+  // async function handleProvider(provider: Provider) {
+  //   let { data, error } = await supabase.auth.signInWithOAuth({
+  //     provider: provider,
+  //     options: { redirectTo: getURL() + "dashboard" },
+  //     // options: { redirectTo: "http://localhost:3000/dashboard" }, // this works locally but not when deployed
+  //   });
+  //   console.log(data, error);
+  // }
   return (
     <>
       {/* {client && <p className="to-blue-600">connected</p>} */}
@@ -81,6 +103,8 @@ export default function Login() {
             height={38}
             priority
           />
+
+         
 
           <form onSubmit={handleLogin} className={styles.form}>
             <input
