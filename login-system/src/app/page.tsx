@@ -74,8 +74,9 @@ console.log(url);
 async function handleProvider(provider: Provider) {
   let { data, error } = await supabase.auth.signInWithOAuth({
     provider: provider,
-    options: { redirectTo: 'https://prototype-4.vercel.app/dashboard' },
+    options: { redirectTo: 'http://localhost:3000/dashboard' },
   })
+  // window.location.href = "https://prototype-4.vercel.app/dashboard";
   console.log(data, error)
   }
 
