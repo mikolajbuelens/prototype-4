@@ -6,6 +6,8 @@
 </center>
 
 
+> 🪲⚠️ Bug: for some reason, when using the deployment link, the redirect after logging in with a provider (e.g. Github) the redirect will always go to localhost:3000, the url should look like this http://localhost:3000/dashboard#access_token=YOUR_ACCESS_TOKEN this currently has to be manually changed to "https://prototype-4.vercel.app/dashboard#access_token=YOUR_ACCESS_TOKEN"
+
 
 ## 📜 Description
 A login system made using Next.js and Supabase, with a simple UI and a few features like login, logout, and sign up. Users can also use various social media accounts to sign up and log in.
