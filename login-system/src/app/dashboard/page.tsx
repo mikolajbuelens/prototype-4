@@ -30,69 +30,59 @@ export default function Dashboard() {
     getUser();
   }, [supabase]);
 
-
   async function handleLogout() {
     let { error } = await supabase.auth.signOut();
     if (error) {
       console.error("Error logging out:", error.message);
       return;
-    } else{
-      console.log('Logged out')
+    } else {
+      console.log("Logged out");
       window.location.href = "/";
     }
   }
 
+  async function getProviderToken() {
+    const session = await supabase.auth.getSession();
+    console.log(session.data.session.provider_token);
+    setProviderToken(session.data.session.provider_token);
 
-
-async function getProviderToken(){
-  const session = await supabase.auth.getSession();
-  console.log(session.data.session.provider_token)
-  setProviderToken(session.data.session.provider_token)
-  
-  // console.log(session.provider_token)
-  // return session
-}
-
-
-
-useEffect(() => {
-  async function fetchRepos() {
-    if (providerToken) {
-      const response = await fetch('https://api.github.com/user/repos', {
-        headers: {
-          Authorization: `Bearer ${providerToken}`,
-        },
-      });
-      const data = await response.json();
-      setRepos(data);
-      console.log(data);
-    } else{
-      console.error('No provider token')
-     setRepos([
-      {
-        id: 1,
-        name: "No data",
-        language: "No data",
-        html_url: "No data",
-      },
-     ])
-    }
+    // console.log(session.provider_token)
+    // return session
   }
-  fetchRepos();
-}, [providerToken]);
 
+  useEffect(() => {
+    async function fetchRepos() {
+      if (providerToken) {
+        const response = await fetch("https://api.github.com/user/repos", {
+          headers: {
+            Authorization: `Bearer ${providerToken}`,
+          },
+        });
+        const data = await response.json();
+        setRepos(data);
+        console.log(data);
+      } else {
+        console.error("No provider token");
+        setRepos([
+          {
+            id: 1,
+            name: "No data",
+            language: "No data",
+            html_url: "No data",
+          },
+        ]);
+      }
+    }
+    fetchRepos();
+  }, [providerToken]);
 
-useEffect(() => {
-  getProviderToken()
-}
-, [supabase]);
+  useEffect(() => {
+    getProviderToken();
+  }, [supabase]);
 
-
-
-useEffect(() => {
-  console.log(repos)
-}
-, [repos]);
+  useEffect(() => {
+    console.log(repos);
+  }, [repos]);
 
   return (
     <main className="flex flex-col row-start-2 items-center sm:items-start">
@@ -143,16 +133,38 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
-              
-              {/* {repos.map((repo) => (
-                <tr key={repo.id}>
-                  <td className="border px-4 py-2">{repo.name}</td>
-                  <td className="border px-4 py-2">{repo.language}</td>
-                  <td className="border px-4 py-2">
-                    <a href={repo.html_url}>{repo.html_url}</a>
-                  </td>
-                </tr>
-              ))} */}
+              {(() => {
+                try {
+                  if (Array.isArray(repos) && repos.length > 0) {
+                    return repos.map((repo) => (
+                      <tr key={repo.id}>
+                        <td className="border px-4 py-2">{repo.name}</td>
+                        <td className="border px-4 py-2">{repo.language}</td>
+                        <td className="border px-4 py-2">
+                          <a href={repo.html_url}>{repo.html_url}</a>
+                        </td>
+                      </tr>
+                    ));
+                  } else {
+                    return (
+                      <tr>
+                        <td colSpan={3} className="text-center">
+                          No repositories found
+                        </td>
+                      </tr>
+                    );
+                  }
+                } catch (error) {
+                  console.error("Error rendering repos:", error);
+                  return (
+                    <tr>
+                      <td colSpan={3} className="text-center text-red-500">
+                        Error loading repositories
+                      </td>
+                    </tr>
+                  );
+                }
+              })()}
             </tbody>
           </table>
         </div>
