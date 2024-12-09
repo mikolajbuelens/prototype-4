@@ -109,9 +109,9 @@ export default function Dashboard() {
             <a href="/dashboard" className="text-lg font-bold mt-5">
               Dashboard
             </a>
-            <a href="/app/profile" className="text-lg font-bold">
+            {/* <a href="/app/profile" className="text-lg font-bold">
               Profile
-            </a>
+            </a> */}
             <button onClick={handleLogout} className="text-lg font-bold">
               Logout
             </button>

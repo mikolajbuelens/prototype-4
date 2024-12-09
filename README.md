@@ -5,12 +5,7 @@
 <h2>Login System</h2>
 </center>
 
-> [!bug]
-> Bug: for some reason the redirect after logging in with a provider (e.g. Github) the redirect url only seems to go to localhost:3000, the url should look like this http://localhost:3000/dashboard#access_token=YOUR_ACCESS_TOKEN this currently has to be manually changed to "https://prototype-4.vercel.app/dashboard#access_token=YOUR_ACCESS_TOKEN"
 
-
-
-> 🪲⚠️ Bug: for some reason, when using the deployment link, the redirect after logging in with a provider (e.g. Github) the redirect will always go to localhost:3000, the url should look like this http://localhost:3000/dashboard#access_token=YOUR_ACCESS_TOKEN this currently has to be manually changed to "https://prototype-4.vercel.app/dashboard#access_token=YOUR_ACCESS_TOKEN"
 
 
 ## 📜 Description
