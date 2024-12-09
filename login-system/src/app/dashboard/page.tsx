@@ -68,6 +68,14 @@ useEffect(() => {
       console.log(data);
     } else{
       console.error('No provider token')
+     setRepos([
+      {
+        id: 1,
+        name: "No data",
+        language: "No data",
+        html_url: "No data",
+      },
+     ])
     }
   }
   fetchRepos();
@@ -135,6 +143,7 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
+              
               {repos.map((repo) => (
                 <tr key={repo.id}>
                   <td className="border px-4 py-2">{repo.name}</td>
