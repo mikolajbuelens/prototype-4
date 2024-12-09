@@ -144,7 +144,7 @@ useEffect(() => {
             </thead>
             <tbody>
               
-              {repos.map((repo) => (
+              {/* {repos.map((repo) => (
                 <tr key={repo.id}>
                   <td className="border px-4 py-2">{repo.name}</td>
                   <td className="border px-4 py-2">{repo.language}</td>
@@ -152,7 +152,7 @@ useEffect(() => {
                     <a href={repo.html_url}>{repo.html_url}</a>
                   </td>
                 </tr>
-              ))}
+              ))} */}
             </tbody>
           </table>
         </div>
